@@ -1,0 +1,36 @@
+
+<h2>List Customers</h2>
+<table>
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Balance</th>
+    <th>Opsi</th>
+  </tr>
+  <tr *ngFor="let customer of customers" [class.selected]="customer === selectCustomer" (click)="onSelect(customer)">
+    <td>{{customer.id}}</td>
+    <td>{{customer.name}}</td>
+    <td>{{customer.phone}}</td>
+    <!-- default currency nya adalah Rp. -->
+    <td>{{customer.balance | rupiah}}</td>
+    <!--
+      jika akan membuat custom currency 
+      <td>{{customer.balance | rupiah : "$"}}</td>
+    -->
+    <td><button>Edit</button></td>
+  </tr>
+  <tr>
+</table>
+<nav>
+    <!---
+      menggunakan queryParams , configurasi dibagian componen 
+      yang menerima params
+      <a routerLink="customer/list" [queryParams]="balance:45000">create</a><br/>
+    -->
+    <a routerLink="customer/list" [queryParams]="{balance:45000}">create</a><br/>
+     <a routerLink="customer/create">create</a><br/>
+      <a routerLink="customer/list">List</a>
+    </nav>
+<app-customer-detail [customer]="selectCustomer"></app-customer-detail>
+<router-outlet></router-outlet>

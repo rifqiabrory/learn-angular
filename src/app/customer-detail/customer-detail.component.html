@@ -1,0 +1,19 @@
+<div *ngIf="customer">
+    <h2>{{customer.name | lowercase}} Details</h2>
+    <div>
+        <label>Id : </label>
+        <input value="{{customer.id}}" readonly="">
+    </div>
+    <div>
+        <label>Name : </label>
+        <input [(ngModel)]="customer.name" placeholder="name"/>
+    </div>
+    <div>
+        <label>Phone : </label>
+        <input [(ngModel)]="customer.phone" placeholder="phone"/>
+    </div>
+    <div>
+        <label>Phone : </label>
+        <input [(ngModel)]="customer.balance" placeholder="balance"/>
+    </div>
+</div>
